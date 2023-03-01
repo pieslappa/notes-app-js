@@ -1,0 +1,43 @@
+html {
+  background: #ff4d56;
+}
+body {
+  background: white;
+  width: 40%;
+  margin: auto;
+  margin-top: 1.2rem;
+  padding: 1.2rem;
+  border-radius: 0.6rem;
+}
+
+* {
+  font-family: sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+.note {
+  border-bottom: 1px solid #aaa;
+  padding: 0.9rem;
+}
+
+input[type="text"] {
+  width: 75%;
+  background: #f7f7f7;
+  border-radius: 4px;
+  padding: 10px 8px;
+  border: 1px solid #444;
+  font-size: 1.2rem;
+}
+
+button {
+  width: 20%;
+  background: #55bd9c;
+  border-radius: 4px;
+  padding: 10px 8px;
+  border: 1px solid #444;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
