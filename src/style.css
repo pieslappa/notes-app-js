@@ -14,8 +14,8 @@ body {
   font-family: sans-serif;
 }
 
-h1 {
-  text-align: center;
+#title {
+  margin: auto;
 }
 
 .note {
@@ -23,8 +23,11 @@ h1 {
   padding: 0.9rem;
 }
 
+.input-box {
+  margin: auto;
+}
+
 input[type="text"] {
-  width: 75%;
   background: #f7f7f7;
   border-radius: 4px;
   padding: 10px 8px;
@@ -32,12 +35,24 @@ input[type="text"] {
   font-size: 1.2rem;
 }
 
+.buttons {
+  margin: auto;
+}
+
 button {
-  width: 20%;
-  background: #55bd9c;
+  display: inline-flex;
   border-radius: 4px;
+  margin: 10px;
   padding: 10px 8px;
   border: 1px solid #444;
   font-size: 1.2rem;
   cursor: pointer;
+}
+
+#add-button {
+  background: #55bd9c;
+}
+
+#reset-button {
+  background: #e74c3c;
 }
