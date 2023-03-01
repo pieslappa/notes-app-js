@@ -42,6 +42,19 @@ class NotesClient {
       console.log("Error: " + error);
     }
   }
+
+  async reset(callback) {
+    try {
+      const response = await fetch("http://localhost:3000/notes", {
+        method: "DELETE",
+      });
+      const responseData = await response.json();
+      console.log("Success: " + JSON.stringify(responseData));
+      return callback(responseData);
+    } catch (error) {
+      console.log("Error: " + JSON.stringify(error));
+    }
+  }
 }
 
 module.exports = NotesClient;

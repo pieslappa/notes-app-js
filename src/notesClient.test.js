@@ -58,4 +58,14 @@ describe("NotesClient class", () => {
       expect(returnedData).toEqual("Hello world 🔥");
     });
   });
+
+  it("resets the notes on the server", async () => {
+    const client = new NotesClient();
+
+    fetch.mockResponseOnce([]);
+
+    await client.reset((data) => {
+      expect(data).toEqual([]);
+    });
+  });
 });
