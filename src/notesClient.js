@@ -18,8 +18,26 @@ class NotesClient {
         body: JSON.stringify(payload),
       });
       const responseData = await response.json();
-      console.log("Success: " + responseData);
+      // console.log("Success: " + responseData);
       return callback(responseData);
+    } catch (error) {
+      console.log("Error: " + error);
+    }
+  }
+
+  async convertEmoji(noteText, callback) {
+    try {
+      const payload = { text: noteText };
+      const response = await fetch("https://makers-emojify.herokuapp.com/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+      const responseData = await response.json();
+      console.log("Success: " + JSON.stringify(responseData));
+      return callback(responseData.emojified_text);
     } catch (error) {
       console.log("Error: " + error);
     }

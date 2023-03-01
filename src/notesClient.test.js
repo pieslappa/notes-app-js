@@ -32,13 +32,30 @@ describe("NotesClient class", () => {
       done();
     });
   });
+
   it("calls fetch and posts a new note", async () => {
     const client = new NotesClient();
 
     fetch.mockResponseOnce(JSON.stringify(["Hello, world!"]));
 
     await client.createNote("Hello, world", (returnedData) => {
-      expect(returnedData[0]).toBe("Hello, world!");
+      expect(returnedData).toEqual(["Hello, world!"]);
+    });
+  });
+
+  it("returns a string with emojis converted", async () => {
+    const client = new NotesClient();
+
+    fetch.mockResponseOnce(
+      JSON.stringify({
+        status: "OK",
+        text: "Hello world :fire:",
+        emojified_text: "Hello world 🔥",
+      })
+    );
+
+    await client.convertEmoji("Hello world :fire:", (returnedData) => {
+      expect(returnedData).toEqual("Hello world 🔥");
     });
   });
 });
