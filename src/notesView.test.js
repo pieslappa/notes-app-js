@@ -34,9 +34,15 @@ describe("NotesView", () => {
     expect(document.querySelectorAll(".note")[1].textContent).toBe("World");
   });
 
-  it("adds a new note and displays", () => {
+  it("adds a new note and displays it", () => {
     const model = new NotesModel();
     const mockClient = new NotesClient();
+    mockClient.createNote.mockImplementation((note, callback) =>
+      callback([note])
+    );
+    mockClient.convertEmoji.mockImplementation((text, callback) =>
+      callback([text])
+    );
     const view = new NotesView(model, mockClient);
     const inputEl = document.querySelector("#note-input");
     inputEl.value = "Hello world";

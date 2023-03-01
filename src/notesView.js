@@ -25,16 +25,22 @@ class NotesView {
     });
   }
 
-  addNote() {
-    this.model.addNote(this.inputEl.value);
-    this.displayNotes();
-    this.inputEl.value = null;
-  }
-
   async displayNotesFromApi() {
     this.client.loadNotes((notes) => {
       this.model.setNotes(notes);
+
       this.displayNotes();
+    });
+  }
+
+  async addNote() {
+    const inputVal = this.inputEl.value;
+    const data = await this.client.convertEmoji(inputVal, (data) => {
+      this.client.createNote(data, (data) => {
+        this.model.setNotes(data);
+        this.inputEl.value = null;
+        this.displayNotes();
+      });
     });
   }
 }
