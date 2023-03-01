@@ -4,10 +4,14 @@ class NotesView {
     this.client = client;
     // HTTP Elements
     this.mainContainerEl = document.querySelector("#main-container");
-    this.buttonEl = document.querySelector("#add-button");
+    this.addButtonEl = document.querySelector("#add-button");
+    this.resetButtonEl = document.querySelector("#reset-button");
     this.inputEl = document.querySelector("#note-input");
-    this.buttonEl.addEventListener("click", () => {
+    this.addButtonEl.addEventListener("click", () => {
       this.addNote();
+    });
+    this.resetButtonEl.addEventListener("click", () => {
+      this.resetNotes();
     });
   }
 
@@ -42,6 +46,11 @@ class NotesView {
         this.displayNotes();
       });
     });
+  }
+
+  async resetNotes() {
+    const data = await this.client.reset();
+    this.displayNotesFromApi();
   }
 }
 

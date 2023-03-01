@@ -73,4 +73,15 @@ describe("NotesView", () => {
     const notes = document.querySelectorAll(".note");
     expect(notes.length).toBe(1);
   });
+
+  it("resets all notes and returns an empty array", () => {
+    const model = new NotesModel();
+    const mockClient = new NotesClient();
+    mockClient.reset.mockImplementation((callback) => callback([]));
+
+    const view = new NotesView(model, mockClient);
+    view.displayNotesFromApi();
+    const notes = document.querySelectorAll(".note");
+    expect(notes.length).toBe(0);
+  });
 });
